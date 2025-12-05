@@ -8,11 +8,11 @@ using System.Text.Json;
 
 namespace backend;
 
-public class EmailNotifier
+public class ContactSubmit
 {
-    private readonly ILogger<EmailNotifier> _logger;
+    private readonly ILogger<ContactSubmit> _logger;
 
-    public EmailNotifier(ILogger<EmailNotifier> logger)
+    public ContactSubmit(ILogger<ContactSubmit> logger)
     {
         _logger = logger;
     }
@@ -60,8 +60,8 @@ public class EmailNotifier
         smtp.Send(mail);
     }
 
-    [Function("EmailNotification")]
-    public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Anonymous, "post")] HttpRequest req)
+    [Function("ContactSubmit")]
+    public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "contact/submit")] HttpRequest req)
     {
         _logger.LogInformation($"EmailNotification: Received request.");
 
