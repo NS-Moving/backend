@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Routing.Constraints;
 
 namespace backend;
 
@@ -10,6 +9,7 @@ public class ContactForm
     public string? Email { get; }
     public DateOnly Date { get; }
     public string? Description { get; }
+    public string? AddOns { get; }
 
     public List<(Stream stream, string fileName)>? files = [];
 
@@ -19,6 +19,7 @@ public class ContactForm
         PhoneNumber = form["phoneNumber"];
         Email = form["email"];
         Description = form["description"];
+        AddOns = form["addOns"];
 
         if (!DateOnly.TryParse(form["date"], out DateOnly parseDate))
             throw new ArgumentException("Invalid date format");
@@ -45,11 +46,11 @@ public class ContactForm
 
     public string GenerateEmailBody()
     {
-        return $"Contact from filled:\n{Name}\n{PhoneNumber}\n{Email}\n\nProject Date: {Date}\nProject Description: {Description}";
+        return $"Contact from filled:\n{Name}\n{PhoneNumber}\n{Email}\n\nProject Date: {Date}\nAdd Ons: {AddOns}\nProject Description: {Description}";
     }
 
     public string GenerateEmailSubject()
     {
-        return $"{Name} - {Date}";;
+        return $"{Name} - {Date}";
     }
 }
