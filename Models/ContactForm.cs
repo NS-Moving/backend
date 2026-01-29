@@ -50,7 +50,7 @@ public class ContactForm
 
     public string GenerateEmailBody()
     {
-        return $"Contact from filled:\n{Name}\n{PhoneNumber}\n{Email}\n\nMoving Date: {Date}\nMoving From: {MovingFromAddress}\nMoving To: {MovingToAddress}\n\nAdd Ons: {AddOns}\nDescription: {Description}";
+        return $"Contact Form Filled:\n{Name}\n{PhoneNumber}\n{Email}\n\nMoving Date: {Date}\nMoving From: {MovingFromAddress}\nMoving To: {MovingToAddress}\n\nAdd Ons: {AddOns}\nDescription: {Description}";
     }
 
     public string GenerateEmailSubject()
