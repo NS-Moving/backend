@@ -30,7 +30,7 @@ public class ContactForm
         else
             Date = parseDate;
 
-        if (IsNullOrWhiteSpaceArray([Name, PhoneNumber, Email, MovingToAddress, MovingFromAddress]))
+        if (IsNullOrWhiteSpaceArray([Name, PhoneNumber, MovingToAddress, MovingFromAddress]))
             throw new ArgumentException("Bad request body");
 
         foreach (IFormFile file in form.Files)
